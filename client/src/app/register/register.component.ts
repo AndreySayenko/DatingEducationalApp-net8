@@ -10,10 +10,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  private accountService = inject(AccountService);
+  // private accountService = inject(AccountService);
   private toastr = inject(ToastrService);
   cancelRegister = output<boolean>();
   model: any = {};
+
+  constructor(private readonly accountService: AccountService) {}
 
   register(): void {
     this.accountService.register(this.model).subscribe({
